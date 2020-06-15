@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import Interview from '../Interview';
+import SelectedCandidates from '../SelectedCandidates';
 
 export const InterviewContext = React.createContext();
 
 const InterviewContextProvider = ({children})=> {
 
   const [userCandidates, setUserCandidates] = useState([]);
-   
+  const [selectedCandidates, setSelectedCandidates] = useState([]);
+
   useEffect(()=>{
     const fetchUserCandidates = async () => {
       const response = await fetch ('/candidates/4');
@@ -22,7 +24,24 @@ const InterviewContextProvider = ({children})=> {
   }, [])
   
   const name = 'himmi';
-  const value = {name, userCandidates}
+
+  const selectCandidate = (candidat) => {
+    console.log('selectCandidate');
+    if (!selectedCandidates.some(c=>c.id == candidat.id)){
+      setSelectedCandidates([...selectedCandidates, candidat]);
+    }else{
+      const newSelectedCandidates = selectedCandidates.filter(c=>c.id !== candidat.id);
+      setSelectedCandidates(newSelectedCandidates);
+    }
+    return;
+  };
+
+  const unselectCandidate = (id) => {
+    console.log('selectedCandidates : ', selectedCandidates);
+    
+  }
+
+  const value = { name, userCandidates, selectedCandidates, selectCandidate, unselectCandidate }
         return (
             <InterviewContext.Provider value={value}>
               {children }

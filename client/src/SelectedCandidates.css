@@ -82,13 +82,13 @@
   align-items: center;
   margin-top: 20px;
   background-color: #f2bb13;
-  width: 100%;
+  width: 50%;
   height: 50px;
   font-size: 14px;
   line-height: 14pt;
-   
   color: white;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .form-button:hover {

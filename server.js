@@ -57,10 +57,8 @@ const candidates = [
 ]
 
 app.get('/candidates/:userId', async (req, res) => {
-  console.log('haha');
   const userId = req.params.userId;
   let userCandidates = candidates.filter(c=>c.userId == userId);
-  console.log('candidates : ', typeof(userCandidates));
   res.send(JSON.stringify(userCandidates));
 })
 
