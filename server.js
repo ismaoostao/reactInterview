@@ -11,7 +11,7 @@ server.listen(PORT, ()=>{
 })
 
 
-/*  chat socket io
+/*  chat socket io */
 const socketio = require('socket.io');
 const io = socketio(server);
 
@@ -33,7 +33,7 @@ io.on('connection', (socket)=>{
   })
 })
 
-*/
+
 
 
 app.use(bp.json());
