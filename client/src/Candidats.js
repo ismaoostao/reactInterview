@@ -1,5 +1,4 @@
 import React from 'react';
-import CandidatsList from './CandidatsList';
 import SelectedCandidates from './SelectedCandidates';
 import './Candidats.css';
 

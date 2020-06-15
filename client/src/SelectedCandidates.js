@@ -6,12 +6,17 @@ import Candidat from './Candidat';
 
 export default({redirect}) => {
   
-  const goToChatRoom = () => {
-    redirect('chatroom');
-  }
+
 
   const { userCandidates, selectCandidate, unselectCandidate, selectedCandidates } = useContext(InterviewContext);
   
+  const goToChatRoom = () => {
+    if(selectedCandidates.length > 0){
+    redirect(`/chatroom/${selectedCandidates[0].id}`);
+    }
+    return;
+  }
+
   const putInSelectedCandidates = (id) => {
     const candidateToSelect = userCandidates.find(cand=>cand.id == id);
     selectCandidate(candidateToSelect);

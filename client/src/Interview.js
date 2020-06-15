@@ -14,7 +14,7 @@ class Interview extends Component {
         <InterviewContextProvider>
           <BrowserRouter>
             <Switch>
-              <Route path='/chatRoom' component={ChatRoom} />
+              <Route path='/chatRoom/:id' component={ChatRoom} />
               <Route path='/' component={InterviewHome} />
             </Switch>    
           </BrowserRouter>
