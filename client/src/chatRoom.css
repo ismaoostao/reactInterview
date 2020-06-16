@@ -57,10 +57,10 @@
 }
 
 .retour{
-    width: 120px;
+    width: 90px;
     height: 40px;
     position: absolute;
-    top: 2vh;
+    top: -25px;
     left: 2vw;
     display: flex;
     justify-content: center;

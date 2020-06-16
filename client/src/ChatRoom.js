@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState, useRef } from 'react';
 import socketIOClient from "socket.io-client";
 import './chatRoom.css';
 import { InterviewContext } from './context/InterviewContext';
 
 export default (props) => {
-
+    const inputRef = useRef(null);
     const [message, setMessage] = useState("");
     const { selectedCandidates } = useContext(InterviewContext);
     const [ candidateDisconnected, setCandidateDisconnected ] = useState(false);
@@ -13,6 +13,7 @@ export default (props) => {
 
       const {endpoint} = messages;
       const socket = socketIOClient(endpoint);
+      
 
       socket.on("candidateDisconnected", ()=>{
         setCandidateDisconnected(true);
@@ -38,8 +39,8 @@ export default (props) => {
       }
 
       useEffect(()=>{
-        console.log('messages : ', messages);
-      }, [messages]);
+        inputRef.current.focus();
+      }, []);
     
     const candidate = selectedCandidates[0];
     console.log('candidate : ', candidate);
@@ -75,6 +76,7 @@ export default (props) => {
                                     <label>Ecrire votre message : </label>
                                     <input type="text" id="message"
                                     value={message}
+                                    ref={inputRef}
                                     onChange={(e)=>onChangeMessage(e)} />
                                     <button onClick={e=>sendMessage(e)}>Envoyer</button>
                                 </form>
