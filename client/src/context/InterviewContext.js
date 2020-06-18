@@ -23,7 +23,7 @@ const InterviewContextProvider = ({children})=> {
     fetchUserCandidates(); 
   }, [])
   
-  const name = 'himmi';
+  const name = 'Maximus';
 
   const selectCandidate = (candidat) => {
     console.log('selectCandidate');

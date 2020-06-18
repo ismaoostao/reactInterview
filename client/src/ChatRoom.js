@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState, useRef } from 'react';
 import socketIOClient from "socket.io-client";
 import './chatRoom.css';
 import { InterviewContext } from './context/InterviewContext';
+import Message from './Message';
 
 export default (props) => {
     const inputRef = useRef(null);
@@ -55,32 +56,42 @@ export default (props) => {
             <div className="chatRoomOptions">
 
                 <div className="chatTools">
-                    <div className="option">Chat Vidéo</div>
+
+                  <a className="option" href="https://talky.io/roodeoo.com" target="_blank">
+                    Chat Vidéo
+                  </a>
+
                     <div className="option">Living Code</div>
                 </div>
 
                 <div className="chatWindow">
-                { candidateDisconnected && <p>Un utilisateur a quitté le chat</p> }
-                    <div id="chatContainer">
-                            <div id="messagesDiv">
-                            <h2>Messages</h2>
-                                {
-                                messages.response.length > 0 ? <ul>
-                                {messages.response.map(message=><li>{message}</li>)}
-                                </ul> : ""
-                                }
-                            </div>
 
-                            <div id="saisieMessage">
-                                <form id="messageForm">
-                                    <label>Ecrire votre message : </label>
-                                    <input type="text" id="message"
-                                    value={message}
-                                    ref={inputRef}
-                                    onChange={(e)=>onChangeMessage(e)} />
-                                    <button onClick={e=>sendMessage(e)}>Envoyer</button>
-                                </form>
-                            </div>
+                { candidateDisconnected && <p>Un utilisateur a quitté le chat</p> }
+
+                   <div className="saisieMessage">
+                      <form className="messageForm">
+                        <label>Ecrire votre message : </label>
+                        <input 
+                          type="text"
+                          id="message"
+                          size="50"
+                          value={message}
+                          ref={inputRef}
+                          onChange={(e)=>onChangeMessage(e)} />
+                        <button onClick={e=>sendMessage(e)}>Envoyer</button>
+                      </form>
+                    </div>
+
+                 
+                    <div className="chatContainer">
+                      <div className="messagesDiv">
+                          {
+                            messages.response.length > 0 ? 
+                            messages.response.map(message=>
+                            <Message text={message.text} date={message.date}/>)
+                             : ""
+                          }
+                      </div>
                     </div>
                 </div>
             </div>

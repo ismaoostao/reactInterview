@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const bp = require('body-parser');
+const moment = require('moment');
 
 const app = express();
 const server = http.createServer(app);
@@ -24,13 +25,16 @@ io.on('connection', (socket)=>{
     if(messages.length == 16){
       messages.shift();
     }
+
+    message = {text: message, date: moment().format('HH:mm')};
     messages.push(message);
     io.emit("FromAPI", messages);
   })
 
-  socket.on('disconnect', ()=>{
+  /*socket.on('disconnect', ()=>{
     io.emit('candidateDisconnected');
   })
+  */
 })
 
 
@@ -46,7 +50,7 @@ const users = [
 
 const candidates = [
     {
-    id:51, userId: 4, email: "lalou.zacharie@oostaoo.com", nom: 'Lalouche', prenom: 'Zakouche'
+    id:51, userId: 4, email: "lalou.zacharie@oostaoo.com", nom: 'Brown', prenom: 'James'
     },
     {
     id:24, userId: 4, email: 'hamdoun.ismael@oostaoo.com', nom: 'Maz', prenom: 'Isma'
