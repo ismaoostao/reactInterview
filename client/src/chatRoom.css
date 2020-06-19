@@ -13,6 +13,11 @@
     margin-bottom: 6vh;
 }
 
+.chatTools > .option{
+    text-decoration: none;
+    color: black;
+}
+
 .chatRoomOptions{
     width: 99%;
     height: 80%;
