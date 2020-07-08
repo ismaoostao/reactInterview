@@ -13,7 +13,6 @@ const InterviewContextProvider = ({children})=> {
     const fetchUserCandidates = async () => {
       const response = await fetch ('/candidates/4');
       const userCandidates = await response.json();
-      console.log('CONTEXT USEEFFECT / userCandidates : ', userCandidates);
 
        setUserCandidates(userCandidates);
        console.log('this.state.userCandidates : ', userCandidates);
@@ -26,7 +25,6 @@ const InterviewContextProvider = ({children})=> {
   const name = 'Maximus';
 
   const selectCandidate = (candidat) => {
-    console.log('selectCandidate');
     if (!selectedCandidates.some(c=>c.id == candidat.id)){
       setSelectedCandidates([...selectedCandidates, candidat]);
     }else{
@@ -37,7 +35,6 @@ const InterviewContextProvider = ({children})=> {
   };
 
   const unselectCandidate = (id) => {
-    console.log('selectedCandidates : ', selectedCandidates);
     
   }
 

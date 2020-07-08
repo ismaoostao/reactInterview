@@ -57,7 +57,7 @@ export default (props) => {
 
                 <div className="chatTools">
 
-                  <a className="option" href="https://talky.io/roodeoo.com" target="_blank">
+                  <a className="option" href={`https://talky.io/roodeoo.com&candidate=${candidate.id}`} target="_blank">
                     Chat Vidéo
                   </a>
 
