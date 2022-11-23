@@ -9,7 +9,7 @@
     "http": "^0.0.1-security",
     "moment": "^2.26.0",
     "nodemon": "^2.0.4",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"
